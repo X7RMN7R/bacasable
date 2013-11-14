@@ -1,0 +1,5 @@
+Using GIT
+
+1. Create repository on github
+2. Clone repository on local file
+
