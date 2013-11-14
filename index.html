@@ -14,7 +14,27 @@
 	(function($) {
 		$(function(){
 			// Display google map
-			$("#my_map").gmap3();
+			$("#my_map").gmap3({ 
+			  map:{
+				options:{ 
+				  center:{lat: 40.65,lng: -73.95}, 
+				  zoom: 12
+				}
+			  },
+			  kmllayer:{
+				options:{
+				  url: "http://gmap3.net/kml/rungis-desc.kml",
+				  opts:{
+					suppressInfoWindows: true
+				  }
+				},
+				events:{
+				  click: function(kml, event){
+					alert(event.featureData.description);
+				  }
+				}
+			  }
+			});
 		});
 	})(jQuery);
     </script>
