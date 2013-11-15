@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+	<head>
+		<title>Titre</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+		<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	</head>
+	<body>
+		<div id="my_map" style="height:250px"/><br/>
+	</body>
+	<script type="text/javascript">
+	map = new OpenLayers.Map("my_map");
+	map.addLayer(new OpenLayers.Layer.OSM());
+
+	/* KML layer does not work : data should be hosted on an http server (?)
+	var kmllayer = new OpenLayers.Layer.Vector("KML", {
+            strategies: [new OpenLayers.Strategy.Fixed()],
+            protocol: new OpenLayers.Protocol.HTTP({
+                url: "./data/LOC_TRONCONS_ROUTIERS_NM.kmz",
+                format: new OpenLayers.Format.KML({
+                    extractStyles: true, 
+                    extractAttributes: true,
+                    maxDepth: 2
+                })
+            })
+        });
+    map.addLayer(kmllayer);
+	*/
+	
+	//map.zoomToMaxExtent();
+	var bounds = new OpenLayers.Bounds();
+	bounds.extend(new OpenLayers.LonLat(-1.56,47.20).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()));
+	bounds.extend(new OpenLayers.LonLat(-1.54,47.25).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()));
+	map.zoomToExtent(bounds);
+	</script>
+</html>
+
