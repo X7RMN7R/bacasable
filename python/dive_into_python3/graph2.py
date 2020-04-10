@@ -11,8 +11,8 @@ resY = []
 
 def showPoint(x, y):
 	z = (x,y)
-	nthElement = mb.mandelbrot(z, 10)
-	return mb.zdist(nthElement) < 10
+	nthElement = mb.mandelbrot(z, 50)
+	return mb.zdist(nthElement) < 4
 	
 for x in rangeX:
 	for y in rangeY:
